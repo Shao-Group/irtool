@@ -1,5 +1,5 @@
 # Introduction
-irtool an intron-retention tool to identify transcripts (in `gtf` format) with intron-retentions.
+irtool an intron-retention tool to identify transcripts with intron-retentions.
 
 # Installation
 Install from source code: download the source code of irtool from 
@@ -22,5 +22,5 @@ irtool <input-gtf-file> <intron-retention-gtf-file> <filtered-gtf-file>
 ```
 
 The `input-gtf-file` is the input transcript file (in `gtf` format).
-The `intron-retention-gtf-file` is the first output transcript file (in `gtf` format) contains all transcripts with intron-retentions.
-The `filtered-gtf-file` is the second output transcript file (in `gtf` format) contains the remaining transcripts after filtering. 
+The `intron-retention-gtf-file` is an output file (in `gtf` format) contains all transcripts with intron-retentions.
+The `filtered-gtf-file` is another output file (in `gtf` format) contains the remaining transcripts after filtering. 
