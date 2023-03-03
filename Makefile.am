@@ -1,0 +1,4 @@
+AUTOMAKE_OPTIONS = foreign
+SUBDIRS = lib src
+
+EXTRA_DIST = LICENSE README.md
