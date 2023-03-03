@@ -17,7 +17,9 @@ int irtool::intron_retention_filter(const string &file, const string &fo, const 
         load_genome3(file.c_str(), &gm1);
 	bool if_ir = false;
 	int mcount = 0;
+	
 	printf("# total transcripts = %d, ", gm1.transcripts.size());
+	
 	for(int i = 0; i < gm1.transcripts.size(); i++)
         {
 		if_ir = false;

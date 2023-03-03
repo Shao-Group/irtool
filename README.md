@@ -3,7 +3,7 @@ irtool an intron-retention tool to identify transcripts with intron-retentions.
 
 # Installation
 Install from source code: download the source code of irtool from 
-[here](https://github.com/Shao-Group/irtool),
+[here](https://github.com/Shao-Group/irtool.git),
 then use the following commands to compile:
 ```
 ./configure --prefix=/path/to/your/install/folder
