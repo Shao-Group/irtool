@@ -1,5 +1,5 @@
 # Introduction
-irtool an intron-retention tool to identify transcripts with intron-retentions.
+irtool a tool to identify and filtering out transcripts with intron-retentions.
 
 # Installation
 Install from source code: download the source code of irtool from 
