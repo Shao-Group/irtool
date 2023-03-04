@@ -1,9 +1,9 @@
 # Introduction
-irtool is a tool to identify and filtering out transcripts with intron-retentions.
+This is a tool to identify and filtering out transcripts with intron-retentions from an assembly.
 
 # Installation
-Install from source code: download the source code of irtool from 
-[here](https://github.com/Shao-Group/irtool.git),
+Download the source code of the latest release 
+[here](https://github.com/Shao-Group/irtool/releases/download/v1.0.0/irtool-1.0.0.tar.gz),
 then use the following commands to compile:
 ```
 ./configure --prefix=/path/to/your/install/folder
@@ -12,9 +12,9 @@ make install
 ```
 
 # Usage
-Given the input transcript file (in `gtf` format), it will output two files (in `gtf` format):      
+Given the input transcript file (in `gtf` format), irtool will produce two files (in `gtf` format):      
 1. transcripts with intron-retentions,          
-2. retained transcripts after filtering out transcripts with intron-retentions.
+2. transcripts after filtering out transcripts with intron-retentions.
 
 The usage of `irtool` is:
 ```
