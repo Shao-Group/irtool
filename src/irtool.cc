@@ -18,7 +18,7 @@ int irtool::intron_retention_filter(const string &file, const string &fo, const 
 	bool if_ir = false;
 	int mcount = 0;
 	
-	printf("# total transcripts = %d, ", gm1.transcripts.size());
+	printf("# total transcripts = %lu, ", gm1.transcripts.size());
 	
 	for(int i = 0; i < gm1.transcripts.size(); i++)
         {
@@ -90,7 +90,7 @@ int irtool::intron_retention_filter(const string &file, const string &fo, const 
 		}
 		if(if_ir == false) gm1.irftranscripts.push_back(t);
 	}
-	printf("# multi-exon transcripts = %d, # intron-retention transcripts = %d, # transcripts after intron-retention filtering = %d\n", mcount, gm1.irtranscripts.size(), gm1.irftranscripts.size());
+	printf("# multi-exon transcripts = %d, # intron-retention transcripts = %lu, # transcripts after intron-retention filtering = %lu\n", mcount, gm1.irtranscripts.size(), gm1.irftranscripts.size());
 
 	ofstream fout(fo.c_str());
 	for(int i = 0; i < gm1.irtranscripts.size(); i++)

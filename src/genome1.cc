@@ -114,6 +114,7 @@ int genome1::build(const string &file)
 			add_transcript(t);
 		}
 	}
+	return 0;
 }
 
 int genome1::build(const vector<transcript> &v)
