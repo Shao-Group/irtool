@@ -1,5 +1,5 @@
 # Introduction
-This is a tool to identify and filtering out transcripts with intron-retentions from an assembly.
+This is a tool that identifies/separates transcripts with intron-retentions from an assembly.
 
 # Installation
 Download the source code of the latest release 
