@@ -37,56 +37,73 @@ int irtool::intron_retention_filter(const string &file, const string &fo, const 
 		vector< pair<int32_t, int32_t> > ilist = gm1.mgilist[mgindex];
 		vector<double> ilist_cov = gm1.mgilist_cov[mgindex];
 
-		double cov_threshold = 2.0 ;
+		double cov_threshold = 1.0 / coverage_ratio;
 
 		for(int j = 0; j < t.exons.size(); j++)
 		{
 			int32_t lpos = t.exons[j].first;
 			int32_t rpos = t.exons[j].second;
 			
-			
-			// check if first/last exon included in an intron
-			if(j == 0)
-                        {
-                                for(int k = 0; k < ilist.size() - 1; k++)
-                                {
-					if(t_cov > cov_threshold * ilist_cov[k]) continue;
-                                        if(lpos > ilist[k].first && lpos < ilist[k].second && rpos == ilist[k+1].first)
-                                        {
-                                                gm1.irtranscripts.push_back(t);
-                                                if_ir = true;
-                                                break;
-                                        }
-                                }
-                        }
-                        else if(j == t.exons.size() - 1)
-                        {
-                                for(int k = 1; k < ilist.size(); k++)
-                                {
-                                        if(t_cov > cov_threshold * ilist_cov[k]) continue;
-					if(rpos > ilist[k].first && rpos < ilist[k].second && lpos == ilist[k-1].second)
-                                        {
-                                                gm1.irtranscripts.push_back(t);
-                                                if_ir = true;
-                                                break;
-                                        }
-                                }
-                        }
-			if(if_ir == true) break;
-
-			// exon overlap whole intron
-			for(int k = 0; k < ilist.size(); k++)
+			if(!partial_off)
 			{
-				if(t_cov > cov_threshold * ilist_cov[k]) continue;
-				if(ilist[k].first > lpos && ilist[k].second < rpos)
+				// check if first/last exon included in an intron
+				if(j == 0)
 				{
-					if((rpos - lpos) / (ilist[k].second - ilist[k].first) > 4.0) continue;
-					gm1.irtranscripts.push_back(t);
-					if_ir = true;
-					break;
+					for(int k = 0; k < ilist.size() - 1; k++)
+					{
+						if(t_cov > cov_threshold * ilist_cov[k]) continue;
+						if(lpos > ilist[k].first && lpos < ilist[k].second && rpos == ilist[k+1].first)
+						{
+							// check length ratio, skip if overlap ratio < threshold
+							double overlap_length = ilist[k].second - lpos;
+							double intron_length = ilist[k].second - ilist[k].first;
+
+							if(overlap_length < length_ratio * intron_length) continue;
+
+							gm1.irtranscripts.push_back(t);
+							if_ir = true;
+							break;
+						}
+					}
 				}
+				else if(j == t.exons.size() - 1)
+				{
+					for(int k = 1; k < ilist.size(); k++)
+					{
+						if(t_cov > cov_threshold * ilist_cov[k]) continue;
+						if(rpos > ilist[k].first && rpos < ilist[k].second && lpos == ilist[k-1].second)
+						{
+							// check length ratio, skip if overlap ratio < threshold
+							double overlap_length = rpos - ilist[k].first;
+                                                        double intron_length = ilist[k].second - ilist[k].first;
+
+                                                        if(overlap_length < length_ratio * intron_length) continue;
+
+							gm1.irtranscripts.push_back(t);
+							if_ir = true;
+							break;
+						}
+					}
+				}
+				if(if_ir == true) break;
 			}
-			if(if_ir == true) break;
+
+			if(!whole_off)
+			{
+				// exon overlap whole intron
+				for(int k = 0; k < ilist.size(); k++)
+				{
+					if(t_cov > cov_threshold * ilist_cov[k]) continue;
+					if(ilist[k].first > lpos && ilist[k].second < rpos)
+					{
+						if((rpos - lpos) / (ilist[k].second - ilist[k].first) > 4.0) continue;
+						gm1.irtranscripts.push_back(t);
+						if_ir = true;
+						break;
+					}
+				}
+				if(if_ir == true) break;
+			}
 		}
 		if(if_ir == false) gm1.irftranscripts.push_back(t);
 	}
