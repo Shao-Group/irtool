@@ -31,5 +31,5 @@ irtool supports the following parameters.
  ------------------------- | ------------- | ----------
  -lr | 0 | minimal overlap length-ratio for partial intron retention identification
  -cr | 0.5 | minimal coverage-ratio
- -po | FLASE | turn off partial intron retention identification
- -wo | FALSE | turn off entire intron retention identification
+ -po | false | turn off partial intron retention identification
+ -wo | false | turn off entire intron retention identification
