@@ -24,3 +24,12 @@ irtool <input-gtf-file> <intron-retention-gtf-file> <filtered-gtf-file>
 The `input-gtf-file` is the input transcript file (in `gtf` format).
 The `intron-retention-gtf-file` is an output file (in `gtf` format) contains all transcripts with intron-retentions.
 The `filtered-gtf-file` is another output file (in `gtf` format) contains the remaining transcripts after filtering. 
+
+irtool supports the following parameters.
+
+ Parameters | Default Value | Description
+ ------------------------- | ------------- | ----------
+ -lr | 0 | minimal overlap length-ratio for partial intron retention identification
+ -cr | 0.5 | minimal coverage-ratio
+ -po | FLASE | turn off partial intron retention identification
+ -wo | FALSE | turn off entire intron retention identification
