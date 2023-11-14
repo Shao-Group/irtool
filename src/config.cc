@@ -69,10 +69,10 @@ int print_help()
 	
 	printf("\n");
         printf("options:\n");
-        printf(" %-14s  %s\n", "-lr <double>",  "min overlap length-ratio for partial intron retention, default 0");
-	printf(" %-14s  %s\n", "-cr <double>",  "coverage-ratio, default 0.5");
+        printf(" %-14s  %s\n", "-lr <double>",  "minimal overlap length-ratio for partial intron retention identification, 0 by default");
+	printf(" %-14s  %s\n", "-cr <double>",  "minimal coverage-ratio, 0.5 by default");
         printf(" %-14s  %s\n", "-po",  "turn off partial intron retention detection");
-        printf(" %-14s  %s\n", "-wo",  "turn off whole intron retention detection");
+        printf(" %-14s  %s\n", "-wo",  "turn off full/entire intron retention detection");
 
 	return 0;
 }
